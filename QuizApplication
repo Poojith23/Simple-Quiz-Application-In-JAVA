@@ -1,0 +1,72 @@
+package com.pac;
+
+/**
+ * 
+ */
+import java.util.Scanner;
+
+public class QuizApp {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Questions and answer choices
+        String[] questions = {
+                "1. Which of the following is not a Java keyword?",
+                "2. What is the size of an int variable in Java?",
+                "3. Which method is used to start a thread in Java?",
+                "4. What is the default value of a boolean variable in Java?",
+                "5. Which of the following is a valid declaration of a float variable in Java?",
+                "6. What is the range of a byte data type in Java?",
+                "7. Which of these cannot be used for a variable name in Java?",
+                "8. Which method can be used to find the length of a string in Java?",
+                "9. Which keyword is used to inherit a class in Java?",
+                "10. Which of the following is not a primitive data type in Java?"
+        };
+
+        String[][] options = {
+                {"A. static", "B. Boolean", "C. void", "D. private"},
+                {"A. 2 bytes", "B. 4 bytes", "C. 8 bytes", "D. 16 bytes"},
+                {"A. run()", "B. start()", "C. init()", "D. main()"},
+                {"A. true", "B. false", "C. null", "D. 0"},
+                {"A. float f = 1.0;", "B. float f = 1;", "C. float f = 1.0f;", "D. float f = '1';"},
+                {"A. -128 to 127", "B. -32768 to 32767", "C. -2147483648 to 2147483647", "D. None of the above"},
+                {"A. identifier", "B. $identifier", "C. _identifier", "D. 1identifier"},
+                {"A. length()", "B. size()", "C. getSize()", "D. lengthOf()"},
+                {"A. this", "B. super", "C. extends", "D. implements"},
+                {"A. int", "B. float", "C. String", "D. char"}
+        };
+
+        char[] answers = {'B', 'B', 'B', 'B', 'C', 'A', 'D', 'A', 'C', 'C'};
+        char userAnswer;
+        int score = 0;
+
+        // Iterate through each question
+        for (int i = 0; i < questions.length; i++) {
+            System.out.println(questions[i]);
+            for (String option : options[i]) {
+                System.out.println(option);
+            }
+            System.out.print("Your answer: ");
+            userAnswer = scanner.next().toUpperCase().charAt(0);
+
+            // Check the answer
+            if (userAnswer == answers[i]) {
+            	   System.out.println("The is correct");
+                   score++;
+            } else {
+            	 System.out.println("The is incorrect.");
+            	 System.out.println("Quiz Ended");
+            	 break;
+            	 
+            }
+            
+        }
+
+        // Output the score
+        System.out.println("You scored " + score + " out of " + questions.length);
+
+        // Close the scanner
+        scanner.close();
+    }
+}
